@@ -85,6 +85,7 @@ SSI process methods,can be any of following options:
 
 Type: `String`
 Default: `utf8`
+
 File encoding of online files
 
 Supported encodings:GBK,utf8,etc. 
@@ -95,6 +96,7 @@ See [all supported encodings on iconv-lite wiki](https://github.com/ashtuchkin/i
 
 Type: `String`
 Default: `utf8`
+
 File encoding of local files
 
 
