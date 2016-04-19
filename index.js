@@ -23,8 +23,8 @@ SSI.prototype.methodResolve = function(tpath, dPath, options){
 
         var file = fs.createWriteStream(dest);
         http.get(url, function(response) {
-            response.pipe(iconv.decodeStream(options.localEncoding))
-            .pipe(iconv.encodeStream(options.onlineEncoding))
+            response.pipe(iconv.decodeStream(options.onlineEncoding))
+            .pipe(iconv.encodeStream(options.localEncoding))
             .pipe(file);
             file.on('finish', function() {
                 file.close(cb);
@@ -90,7 +90,7 @@ SSI.prototype.resolveIncludes = function (content, options, callback){
                             if (err) {
                                 return next(err);
                             }
-                            content = content.slice(0, matches.index) + iconv.decode(innerContent, options.localEncoding) + content.slice(matches.index + seg.length);
+                            content = content.slice(0, matches.index) + iconv.decode(innerContent, options.onlineEncoding) + content.slice(matches.index + seg.length);
 
                             next(null, content);
                         });
