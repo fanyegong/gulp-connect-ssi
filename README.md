@@ -30,20 +30,21 @@ Uses [node-ssi], supports all of the following:
 ### Using [gulp-connect]
 
 ``` javascript
-var gulpConnect = require('gulp-connect');
-var gulpConnectSsi = require('gulp-connect-ssi');
+var gulp = require('gulp'),
+    gulpConnect = require('gulp-connect');
+    gulpConnectSsi = require('gulp-connect-ssi');
 
 gulp.task('connect', function () {
     gulpConnect.server({
         root: _.app,
         port: process.env.HAMMER_DEV_PORT || 80,
         livereload: true,
-        middleware:function(){
+        middleware: function(){
             return [gulpConnectSsi({
                 baseDir: __dirname + '/app',
-                ext:'.html',
+                ext: '.html',
                 domain: 'http://example.com/',
-                method: 'readOnLineIfNotExist' //readOnLine|readLocal|readOnLineIfNotExist|downloadIfNotExist
+                method: 'readOnLineIfNotExist'  // readOnLine|readLocal|readOnLineIfNotExist|downloadIfNotExist
             })];
         }
     });
