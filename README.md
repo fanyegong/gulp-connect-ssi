@@ -79,7 +79,24 @@ Type: `String`
 Default: `readOnLineIfNotExist`
 
 SSI process methods,can be any of following options:
-`readOnLine`|`readLocal`|`readOnLineIfNotExist`|`downloadIfNotExist`
+`readOnLine` | `readLocal` | `readOnLineIfNotExist` | `downloadIfNotExist`
+
+### options.onlineEncoding
+
+Type: `String`
+Default: `utf8`
+File encoding of online files
+
+Supported encodings:GBK,utf8,etc. 
+
+See [all supported encodings on iconv-lite wiki](https://github.com/ashtuchkin/iconv-lite/wiki/Supported-Encodings).
+
+### options.localEncoding
+
+Type: `String`
+Default: `utf8`
+File encoding of local files
+
 
 [gulp-connect]: https://github.com/avevlad/gulp-connect
 [node-ssi]: https://github.com/yanni4night/node-ssi
