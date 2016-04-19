@@ -50,7 +50,36 @@ gulp.task('connect', function () {
     });
 });
 ```
+## API
 
+### options.baseDir
+
+Type: `String`
+Default: `Directory with gulpfile`
+
+The root path
+
+### options.ext
+
+Type: `String`
+Default: `.shtml`
+
+File extension,only url ending in this will be evaluated.
+
+### options.domain
+
+Type: `String`
+Default: `.`
+
+The domain you want to read or download you included files from.
+
+### options.method
+
+Type: `String`
+Default: `readOnLineIfNotExist`
+
+SSI process methods,can be any of following options:
+`readOnLine`|`readLocal`|`readOnLineIfNotExist`|`downloadIfNotExist`
 
 [gulp-connect]: https://github.com/avevlad/gulp-connect
 [node-ssi]: https://github.com/yanni4night/node-ssi

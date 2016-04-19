@@ -150,8 +150,9 @@ module.exports = function(opt){
      */
     var defaults = {
         baseDir: '.',
-        method: 'readOnLineIfNotExist',
-        domain: '.'
+        ext: '.html',
+        domain: '.',
+        method: 'readOnLineIfNotExist'
     };
 
     opt = Object.assign(defaults, opt);
