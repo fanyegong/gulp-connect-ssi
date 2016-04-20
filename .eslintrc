@@ -1,0 +1,109 @@
+{
+  "env": {
+    "shared-node-browser": true,
+    "amd": true,
+    "es6": true
+  },
+  "extends": "eslint:recommended",
+  "rules": { // http://eslint.org/docs/rules/
+    // Possible Errors
+    "comma-dangle": [2, "never"], // 尾逗号trailing comma
+    "no-cond-assign": 1,  // 不允许条件语句中赋值
+    "no-console": 2,  // 不允许用console
+    "no-constant-condition": 1, // 不允许条件语句中用常量
+    "no-control-regex": 1,  // 不允许正则中用控制字符
+    "no-debugger": 2, // 不允许用debugger语句
+    "no-dupe-args": 2, // 不允许函数中出现重复的参数
+    "no-dupe-keys": 2,  // 不允许Object中出现重复的key
+    "no-duplicate-case": 2,  // 不允许switch语句重复的case
+    "no-empty": 1,  // 不允许空的语句块
+    "no-empty-character-class": 1,  // 不允许正则中空的[]
+    "no-ex-assign": 2,  // 不允许对catch块的event赋值
+    "no-extra-boolean-cast": 1, // 不允许多余的布尔转换!!
+    "no-extra-parens": 0, // 不允许多余括号
+    "no-extra-semi": 1, // 不允许多余的分号
+    "no-func-assign": 1,  // 不允许函数赋值
+    "no-inner-declarations": 2, // 不允许块里的函数和变量赋值
+    "no-invalid-regexp": 2, // 不允许不合法的正则
+    "no-irregular-whitespace": 2, // 不允许不规则的空白,如不在字符串里的
+    "no-negated-in-lhs": 1, // 不允许in语句中的！,需要明确转为字符串
+    "no-obj-calls": 2,  // 不允许把全局变量当函数调用
+    "no-regex-spaces": 1, // 不允许正则里的多个空格
+    "no-sparse-arrays": 2,  // 不允许稀松数组
+    "no-unexpected-multiline":2,  // 不允许会造成误解的换行（不加分好等导致）
+    "no-unreachable": 2,  // 不允许有永远不会执行的语句
+    "use-isnan": 2, // 不允许跟NaN比较，要用isNaN
+    "valid-jsdoc": 1, // 检测JSDoc http://yuri4ever.github.io/jsdoc/
+    "valid-typeof": 2,  // 确保typeof 比较的是有效的值，如String function
+
+    // Best Practices
+    "array-callback-return": 2, // array的一些方法要有返回
+    "block-scoped-var": 2,  // 尽量块内的var只块内用
+    "curly":2 , // 好好写块语句 if while 等
+    "eqeqeq": 2,  // 用 ===
+    "guard-for-in": 2, // for in 中必须有if判断过滤
+    "no-alert": 2,  // disallow the use of alert, confirm, and prompt
+    "no-caller": 2, // disallow use of arguments.caller or arguments.callee
+    "no-else-return": 1, // disallow else after a return in an if
+    "no-eval": 2,
+    "no-implicit-globals": 1, // 全局变量要window.abc = 1;
+    "no-invalid-this": 2, // 不允许无效的this
+    "no-multi-spaces": 2, // 不允许多余空格
+    "no-multi-str": 2,  // 不允许通过\来定义多行字符串
+    "no-new-func": 2, // 不允许new Function
+    "no-new-wrappers": 2, // 不允许new String,Number, and Boolean
+    "no-octal": 2,  // 不允许八进制
+    "no-octal-escape": 2, //不允许八进制转义\251
+    "no-proto": 2,  // disallow usage of __proto__ property
+    "no-redeclare": 2,  // 不允许重复声明
+    "no-self-assign": 2,  // 不允许foo = foo;或者[bar, baz] = [bar, qiz];
+    "no-unmodified-loop-condition": 2,  // 循环里条件没变，有可能是错误
+    "no-unused-expressions": 2,
+    "no-unused-labels": 1,  // 推荐，但觉得一般用不上
+    "no-useless-call": 2, // 不允许不必要的call apply
+    "no-useless-concat": 2, // "a"+"b" 无用，应该"ab"
+    "no-with": 2,
+    "wrap-iife": [2, "any"],
+
+    // Strict Mode
+    "strict": [1, "safe"],
+
+    // Variables
+    "no-delete-var": 2,
+    "no-undef": 2,
+    "no-unused-vars": 2,
+
+    // Stylistic Issues
+    "array-bracket-spacing": [2, "never"],  // 数组里不要有空格
+    "block-spacing": 2,
+    "brace-style": 2, // ｛｝不允许有在一行
+    "camelcase": 0,
+    "comma-spacing": 2,
+    "comma-style": 2,
+    "computed-property-spacing": [2, "never"],
+    "consistent-this": [2, "self"],
+    "eol-last": [2, "windows"],
+    "indent": [2, 4],
+    "keyword-spacing": 2,
+    "linebreak-style": [2, "windows"],
+    "no-array-constructor": 2,
+    "no-new-object": 2,
+    "no-spaced-func": 2,
+    "no-unneeded-ternary": 2,
+    "object-curly-spacing": [2, "never"],
+    "operator-linebreak": [2, "after"],
+    "quotes": [2, "single"],
+    "require-jsdoc": [2, {
+      "require": {
+        "FunctionDeclaration": true,
+        "MethodDefinition": true,
+        "ClassDeclaration": true
+      }
+    }],
+    "semi": [2, "always"],
+    "space-infix-ops": [2,{
+        "int32Hint": true
+      }
+    ]
+  }
+}

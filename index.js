@@ -22,8 +22,8 @@ SSI.prototype.methodResolve = function(tpath, dPath, options){
         fs.mkdirSync(path.dirname(dest));
 
         var file = fs.createWriteStream(dest);
-        http.get(url, function(response) {
-            response.pipe(iconv.decodeStream(options.onlineEncoding))
+        http.get(url, function(res) {
+            res.pipe(iconv.decodeStream(options.onlineEncoding))
             .pipe(iconv.encodeStream(options.localEncoding))
             .pipe(file);
             file.on('finish', function() {
@@ -70,9 +70,9 @@ SSI.prototype.resolveIncludes = function (content, options, callback){
     var matches, seg, isVirtual, basePath, tpath, subOptions, self = this;
 
     /**
-     *
+     * @func insertInclude
      * @param {Object} next next
-     * @return {String} content content
+     * @returns {String} content content
      */
     function insertInclude(next){
         seg = matches[0];
@@ -83,15 +83,17 @@ SSI.prototype.resolveIncludes = function (content, options, callback){
         promise.then(function(value){
             if (value === 'readOnLine'){
                 http.get(url.resolve('http://mini2015.qq.com/', matches[3]), function(res) {
+                    var chunks = [];
                     res.on('data', function(chunk) {
-                        var innerContentRaw = chunk;
+                        chunks.push(chunk);
+                    }).on('end', function() {
+                        var innerContentRaw = iconv.decode(Buffer.concat(chunks), options.onlineEncoding);
                         subOptions = extend({}, options, {dirname: path.dirname(tpath)});
                         self.resolveIncludes(innerContentRaw, subOptions, function(err, innerContent) {
                             if (err) {
                                 return next(err);
                             }
-                            content = content.slice(0, matches.index) + iconv.decode(innerContent, options.onlineEncoding) + content.slice(matches.index + seg.length);
-
+                            content = content.slice(0, matches.index) + innerContent + content.slice(matches.index + seg.length);
                             next(null, content);
                         });
                     });
