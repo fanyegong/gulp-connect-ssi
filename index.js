@@ -79,10 +79,10 @@ SSI.prototype.resolveIncludes = function (content, options, callback){
         isVirtual = RegExp.$1 === 'virtual';
         basePath = (isVirtual && options.dirname && RegExp.$3.charAt(0) !== '/') ? options.dirname : options.baseDir;
         tpath = path.join(basePath, RegExp.$3);
-        var promise = self.methodResolve(tpath, url.resolve('http://mini2015.qq.com/', matches[3]), options);
+        var promise = self.methodResolve(tpath, url.resolve(options.domain, matches[3]), options);
         promise.then(function(value){
             if (value === 'readOnLine'){
-                http.get(url.resolve('http://mini2015.qq.com/', matches[3]), function(res) {
+                http.get(url.resolve(options.domain, matches[3]), function(res) {
                     var chunks = [];
                     res.on('data', function(chunk) {
                         chunks.push(chunk);
