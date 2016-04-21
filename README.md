@@ -15,7 +15,10 @@ npm install gulp-connect-ssi
 
 Uses [node-ssi], supports all of the following:
 
+```
 <!--# include file="path" -->
+
+<!--# include virtual="path" -->
 
 <!--# set var="k" value="v" -->
 
@@ -25,7 +28,7 @@ Uses [node-ssi], supports all of the following:
 <!--# elif expr="" -->
 <!--# else -->
 <!--# endif -->
-
+```
 
 ### Using [gulp-connect]
 
@@ -37,7 +40,7 @@ var gulp = require('gulp'),
 gulp.task('connect', function () {
     gulpConnect.server({
         root: _.app,
-        port: process.env.HAMMER_DEV_PORT || 80,
+        port: 80,
         livereload: true,
         middleware: function(){
             return [gulpConnectSsi({
