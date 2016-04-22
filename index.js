@@ -142,7 +142,7 @@ SSI.prototype.resolveIncludes = function (content, options, callback){
 /**
  *
  * @param {Object} opt opt
- * @return {function} connect-ssi 'plugin for gulp-connect'
+ * @return {function} gulp-connect-ssi 'plugin for gulp-connect'
  */
 module.exports = function(opt){
     /**
