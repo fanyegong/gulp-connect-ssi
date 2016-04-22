@@ -1,4 +1,4 @@
-gulp-connect-ssi
+gulp-connect-ssi [![Build Status](https://travis-ci.org/fanyegong/gulp-connect-ssi.png)](https://travis-ci.org/fanyegong/gulp-connect-ssi)
 ===========
 
 SSI(Server Side Includes) Middleware for [gulp-connect],support  get or download included files online
