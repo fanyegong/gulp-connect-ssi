@@ -4,7 +4,7 @@
   "description": "SSI(Server Side Includes) Middleware for gulp-connect,support  get or download included files online",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -26,5 +26,11 @@
     "iconv-lite": "^0.4.13",
     "node-ssi": "^0.3.2",
     "parseurl": "^1.3.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "express": "^4.13.4",
+    "mocha": "^2.4.5",
+    "supertest": "^1.2.0"
   }
 }
