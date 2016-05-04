@@ -163,11 +163,19 @@ module.exports = function(opt){
 
     var ssi = new SSI(opt);
 
+    function endsWith(str, suffix) {
+        return str.indexOf(suffix, str.length - suffix.length) !== -1;
+    }
+
     return function(req, res, next) {
 
         var url = parseurl(req).pathname;
 
         url = /\/$/.test(url) ? (url + 'index' + opt.ext) : url;
+
+        if (!endsWith(url, opt.ext)) {
+            return next();
+        }
 
         var filePath = path.join(opt.baseDir, url);
 
@@ -186,3 +194,4 @@ module.exports = function(opt){
         });
     };
 };
+
