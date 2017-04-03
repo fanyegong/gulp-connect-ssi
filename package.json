@@ -1,6 +1,6 @@
 {
   "name": "gulp-connect-ssi",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "SSI(Server Side Includes) Middleware for gulp-connect,support  get or download included files online",
   "main": "index.js",
   "scripts": {
