@@ -6,6 +6,7 @@
 
 var fs = require('fs');
 var http = require('http');
+var https = require('https');
 var url = require('url');
 var path = require('path');
 
@@ -22,10 +23,10 @@ SSI.prototype.methodResolve = function(tpath, dPath, options){
         fs.mkdirSync(path.dirname(dest));
 
         var file = fs.createWriteStream(dest);
-        http.get(url, function(res) {
+        (options.domain.indexOf('https') === -1 ? http : https).get(url, function(res) {
             res.pipe(iconv.decodeStream(options.onlineEncoding))
-            .pipe(iconv.encodeStream(options.localEncoding))
-            .pipe(file);
+                .pipe(iconv.encodeStream(options.localEncoding))
+                .pipe(file);
             file.on('finish', function() {
                 file.close(cb);
             });
@@ -82,7 +83,7 @@ SSI.prototype.resolveIncludes = function (content, options, callback){
         var promise = self.methodResolve(tpath, url.resolve(options.domain, matches[3]), options);
         promise.then(function(value){
             if (value === 'readOnLine'){
-                http.get(url.resolve(options.domain, matches[3]), function(res) {
+                (options.domain.indexOf('https') === -1 ? http : https).get(url.resolve(options.domain, matches[3]), function(res) {
                     var chunks = [];
                     res.on('data', function(chunk) {
                         chunks.push(chunk);
