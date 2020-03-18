@@ -130,8 +130,8 @@ SSI.prototype.resolveIncludes = function (content, options, callback){
             const cb = arguments[arguments.length - 1];
             const args = Array.prototype.slice.call(arguments, 0, arguments.length - 1);
             const f = function test() {
-        return !!(matches = self.regExps.includeFileReg.exec(content));
-    };
+                return !!(matches = self.regExps.includeFileReg.exec(content));
+            };
             try {
                 cb(null, f.apply(this, args));
             } catch (e) {
@@ -140,11 +140,12 @@ SSI.prototype.resolveIncludes = function (content, options, callback){
         },
         insertInclude,
         function includesComplete(err) {
-        if (err) {
-            return callback(err);
+            if (err) {
+                return callback(err);
+            }
+            return callback(null, content);
         }
-        return callback(null, content);
-    });
+    );
 };
 
 
@@ -203,4 +204,3 @@ module.exports = function(opt){
         });
     };
 };
-
