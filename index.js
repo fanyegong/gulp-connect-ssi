@@ -126,17 +126,25 @@ SSI.prototype.resolveIncludes = function (content, options, callback){
 
 
     async.whilst(
-        function test() {
-            return !!(matches = self.regExps.includeFileReg.exec(content));
+        function() {
+            const cb = arguments[arguments.length - 1];
+            const args = Array.prototype.slice.call(arguments, 0, arguments.length - 1);
+            const f = function test() {
+        return !!(matches = self.regExps.includeFileReg.exec(content));
+    };
+            try {
+                cb(null, f.apply(this, args));
+            } catch (e) {
+                cb(e, null);
+            }
         },
         insertInclude,
         function includesComplete(err) {
-            if (err) {
-                return callback(err);
-            }
-            return callback(null, content);
+        if (err) {
+            return callback(err);
         }
-    );
+        return callback(null, content);
+    });
 };
 
 

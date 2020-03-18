@@ -21,7 +21,7 @@
   "license": "MIT",
   "homepage": "https://github.com/fanyegong/gulp-connect-ssi",
   "dependencies": {
-    "async": "^2.0.0-rc.3",
+    "async": "^3.0.0",
     "extend": "^3.0.0",
     "iconv-lite": "^0.4.13",
     "node-ssi": "^0.3.2",
